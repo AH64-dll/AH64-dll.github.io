@@ -238,6 +238,19 @@ a { color: var(--link); }
 .tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .tag { font: 500 12.5px/1 var(--font-body); padding: 5px 8px 4px; border-radius: 3px; background: #eef5fb; border: 1px solid #d2e2f0; color: var(--ink-2); }
 .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: auto; padding-top: 2px; }
+.tbody { display: flex; flex-direction: column; gap: 8px; flex: 1 1 auto; min-width: 0; }
+@media (min-width: 760px) {
+  .tile.wide { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 10px 26px; align-items: center; }
+  .tile.wide .tbody { padding-right: 8px; }
+}
+.appicon { width: 30px; height: 30px; border-radius: 7px; align-self: center; box-shadow: 0 0 0 1px rgba(12,42,76,.25), 0 2px 4px rgba(0,30,60,.25); }
+/* a real app: its own screens in phone frames, on the app's navy */
+.shot.phones { display: flex; align-items: center; justify-content: center; gap: 5%; padding: 0 6%;
+  background: radial-gradient(120% 90% at 50% 0%, #1d3f63 0%, #0d1f33 60%, #091626 100%); }
+.phone { position: relative; flex: none; height: 82%; aspect-ratio: 9 / 19.5; padding: 4px; border-radius: 14px;
+  background: linear-gradient(180deg, #3a4656, #121820); box-shadow: 0 0 0 1px rgba(255,255,255,.18), 0 14px 26px -10px rgba(0,0,0,.7); }
+.phone.mid { height: 93%; box-shadow: 0 0 0 1px rgba(214,178,110,.55), 0 18px 30px -10px rgba(0,0,0,.75); }
+.shot .phone img { border-radius: 10px; }
 .stat { margin-left: auto; font: 600 13px/1 var(--font-body); color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .stat.live { color: var(--green); }
 .stat.live::before { content: "● "; }
@@ -450,8 +463,9 @@ footer { justify-self: center; font-size: 13px; color: var(--ink-2); padding: 5p
       <p class="role">Full-stack software engineer building <mark>AI agents, LLM tools</mark> and automation systems.</p>
       <p class="lede">Computer Science student at FCAI, Cairo University, and a freelancer in Giza. I ship typed, tested software, from browser extensions and CLI tools to web stores and desktop apps.</p>
       <ul class="proof">
-        <li><b>9</b> projects</li>
+        <li><b>8</b> projects</li>
         <li><b>2</b> live sites</li>
+        <li><b>1</b> app on Google Play</li>
         <li><b>58★</b> on OpenEdit</li>
       </ul>
       <div class="actions">
@@ -513,7 +527,7 @@ footer { justify-self: center; font-size: 13px; color: var(--ink-2); padding: 5p
           <button type="button" data-f="all" aria-pressed="true">All projects <span class="n"></span></button>
           <button type="button" data-f="ai" aria-pressed="false">AI &amp; automation <span class="n"></span></button>
           <button type="button" data-f="web" aria-pressed="false">Web <span class="n"></span></button>
-          <button type="button" data-f="apps" aria-pressed="false">Apps &amp; libraries <span class="n"></span></button>
+          <button type="button" data-f="apps" aria-pressed="false">Apps <span class="n"></span></button>
           <span class="grp">Links</span>
           <a href="https://github.com/AH64-dll" target="_blank" rel="noopener">GitHub profile ↗</a>
         </nav>
@@ -641,18 +655,20 @@ footer { justify-self: center; font-size: 13px; color: var(--ink-2); padding: 5p
       desc: 'Storefront with a real-time Three.js bottle, cart and checkout with Egyptian phone validation, server-side pricing, WhatsApp confirmation and an HMAC-secured admin dashboard.',
       tags: ['Next.js 16', 'React 19', 'Three.js', 'Tailwind CSS'], stat: 'live', live: true,
       links: [['Visit store', 'https://ah64-dll.github.io/miskova/'], ['Code', GH + 'miskova']] },
-    { id: 'rfc5322', tag: 'apps', lang: 'Python', name: 'rfc5322', kicker: 'Email address parser',
-      desc: 'Zero-dependency parser for the full RFC 5322 grammar, with strict and permissive modes and 100 tests in CI.',
-      stack: 'Python · pytest · CI', links: [['Code', GH + 'rfc5322']] },
+    { id: 'prayer', tag: 'apps', featured: true, wide: true, lang: 'Dart', name: 'Prayer Companion', ar: 'صلينا', icon: 'img/prayer-icon.jpg',
+      kicker: 'Islamic prayer app, published on Google Play',
+      phones: [['img/prayer-quran.jpg', 'Quran reader with recitation audio'],
+               ['img/prayer-home.jpg', 'Home screen: today\'s prayer times with check-in buttons, points and a streak'],
+               ['img/prayer-tasbeeh.jpg', 'Tasbeeh counter']],
+      desc: 'Helps you keep up with the five daily prayers: prayer times for your location with one-tap check-ins, points and streaks, a Quran reader with recitation audio, adhkar, a tasbeeh counter, khatmah tracking and groups. Fully Arabic interface.',
+      tags: ['Flutter', 'Dart', 'Android', 'Arabic UI'], stat: 'live', live: true,
+      links: [['Get it on Google Play', 'https://play.google.com/store/apps/details?id=com.prayercompanion']] },
     { id: 'adhd', tag: 'apps', lang: 'Rust', name: 'ADHD Reminder', kicker: 'Focus app', stat: '★ 4',
       desc: 'Quiet desktop goal reminder with random check-ins, login startup, crash recovery and installers. Data stays on the device.',
       stack: 'Rust · Linux · Windows', links: [['Code', GH + 'adhd-reminder']] },
     { id: 'cdp', tag: 'ai', lang: 'Python', name: 'Browser Automation Toolkit', kicker: 'CDP tools',
       desc: 'Five Chrome DevTools Protocol tools: page watcher, form filler, table scraper, change diff and health check. No Selenium.',
       stack: 'Python · CDP', links: [['Code', GH + 'browser-automation-toolkit']] },
-    { id: 'prayer', tag: 'apps', lang: 'Dart', name: 'Prayer Companion', kicker: 'Mobile app',
-      desc: 'Islamic companion app with Quran reading, prayer times, adhkar, khatmah tracking and shared groups.',
-      stack: 'Flutter · Dart', links: [] },
     { id: 'rental', tag: 'apps', lang: 'TypeScript', name: 'Rental Ledger', kicker: 'Android app',
       desc: 'Tracks rentals and payments. Shipped as an Android APK.',
       stack: 'TypeScript · Android', links: [['Code', GH + 'Rental-Ledger']] },
@@ -699,14 +715,18 @@ footer { justify-self: center; font-size: 13px; color: var(--ink-2); padding: 5p
   // ----- Render projects -----
   const tilesEl = $('#tiles'), rowsEl = $('#rows');
   tilesEl.innerHTML = PROJECTS.filter(p => p.featured).map(p => `
-    <article class="tile" id="p-${p.id}" data-id="${p.id}">
-      <div class="shot">${p.img ? `<img src="${esc(p.img)}" alt="${esc(p.alt)}" decoding="async" width="960" height="600">` : PREVIEW[p.preview]()}</div>
-      <h3>${esc(p.name)}${p.ar ? `<span class="ar" lang="ar">${esc(p.ar)}</span>` : ''}</h3>
-      <p class="kick">${esc(p.kicker)}</p>
-      <p class="desc">${esc(p.desc)}</p>
-      ${p.note ? `<p class="note">${esc(p.note)}</p>` : ''}
-      <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
-      <div class="foot">${p.links.map(l => ext(l[0], l[1])).join('')}${p.stat ? `<span class="stat${p.live ? ' live' : ''}">${esc(p.stat)}</span>` : ''}</div>
+    <article class="tile${p.wide ? ' wide' : ''}" id="p-${p.id}" data-id="${p.id}">
+      <div class="shot${p.phones ? ' phones' : ''}">${p.phones
+        ? p.phones.map(([src, alt], i) => `<span class="phone${i === 1 ? ' mid' : ''}"><img src="${esc(src)}" alt="${esc(p.name + ': ' + alt)}" decoding="async"></span>`).join('')
+        : p.img ? `<img src="${esc(p.img)}" alt="${esc(p.alt)}" decoding="async" width="960" height="600">` : PREVIEW[p.preview]()}</div>
+      <div class="tbody">
+        <h3>${p.icon ? `<img class="appicon" src="${esc(p.icon)}" alt="" width="30" height="30">` : ''}${esc(p.name)}${p.ar ? `<span class="ar" lang="ar">${esc(p.ar)}</span>` : ''}</h3>
+        <p class="kick">${esc(p.kicker)}</p>
+        <p class="desc">${esc(p.desc)}</p>
+        ${p.note ? `<p class="note">${esc(p.note)}</p>` : ''}
+        <div class="tags">${p.tags.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+        <div class="foot">${p.links.map(l => ext(l[0], l[1])).join('')}${p.stat ? `<span class="stat${p.live ? ' live' : ''}">${esc(p.stat)}</span>` : ''}</div>
+      </div>
     </article>`).join('');
   rowsEl.innerHTML = PROJECTS.filter(p => !p.featured).map(p => `
     <div class="drow" role="row" id="p-${p.id}" data-id="${p.id}">
