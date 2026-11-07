@@ -1,11 +1,12 @@
 # ah64-dll.github.io
 
-Personal site of **Amr Hares Abdelaal**: a full-stack software engineer working on AI agents, LLM tools and automation systems.
+Personal site of **Amr Hares Abdelaal**, full-stack software engineer (AI, LLMs and automation systems), Giza, Egypt.
 
-**Live:** https://ah64-dll.github.io/
+Live at **https://ah64-dll.github.io/**
 
-- Frutiger Aero desktop with a working terminal (`help`, `projects`, `open <id>`, `cv`, `contact`)
-- Explorer-style project browser with search and filters
-- CV: [PDF](cv/Amr-Hares-CV.pdf) · [Word](cv/Amr-Hares-CV.docx)
+- `index.html`: the whole site, plain HTML and CSS with no JavaScript or build step
+- `cv/`: the CV as PDF and Word (A4)
+- `img/`: project screenshots
 
-Plain HTML, CSS and JavaScript. No build step.
+The earlier Frutiger Aero + terminal design is saved under the git tag
+[`aero-terminal-v1`](https://github.com/AH64-dll/AH64-dll.github.io/tree/aero-terminal-v1).
